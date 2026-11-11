@@ -21,7 +21,7 @@ function Body() {
   const [salary, setSalary] = useState([]);
   const [showAll, setShowAll] = useState(false);
 
-  const handleChangeTab = (tabsNmame) => {
+  const handleChangeTab = (tabsName) => {
     setTabs(tabsName);
   };
 
@@ -62,7 +62,7 @@ function Body() {
   };
   const getExpenses = async () => {
     try {
-      const res = await fetch("http://localhost:4000/expense/get");
+      const res = await fetch(`${import.meta.env.VITE_WEB_URL}/expense/get`);
 
       const data = await res.json();
 
@@ -83,7 +83,7 @@ function Body() {
       date: date,
     };
     try {
-      const res = await fetch("http://localhost:4000/salary/create", {
+      const res = await fetch(`${import.meta.env.VITE_WEB_URL}/salary/create`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -111,7 +111,7 @@ function Body() {
     }
   };
   const getSalary = async () => {
-    const res = await fetch("http://localhost:4000/salary/get");
+    const res = await fetch(`${import.meta.env.VITE_WEB_URL}/salary/get`);
 
     const data = await res.json();
 
@@ -125,7 +125,7 @@ function Body() {
 
   const deleteExpense = async (id) => {
     try {
-      const res = await fetch(`http://localhost:4000/expense/delete/${id}`, {
+      const res = await fetch(`${import.meta.env.VITE_WEB_URL}/expense/delete/${id}`, {
         method: "DELETE",
       });
       const data = await res.json();
